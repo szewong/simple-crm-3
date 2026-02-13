@@ -197,8 +197,10 @@ export function DealForm({
                   <FormItem>
                     <FormLabel>Contact</FormLabel>
                     <Select
-                      onValueChange={field.onChange}
-                      value={field.value || ""}
+                      onValueChange={(val) =>
+                        field.onChange(val === "__none__" ? null : val)
+                      }
+                      value={field.value || "__none__"}
                     >
                       <FormControl>
                         <SelectTrigger>
@@ -206,7 +208,7 @@ export function DealForm({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="">None</SelectItem>
+                        <SelectItem value="__none__">None</SelectItem>
                         {contacts.map((contact) => (
                           <SelectItem key={contact.id} value={contact.id}>
                             {contact.first_name} {contact.last_name}
@@ -226,8 +228,10 @@ export function DealForm({
                   <FormItem>
                     <FormLabel>Company</FormLabel>
                     <Select
-                      onValueChange={field.onChange}
-                      value={field.value || ""}
+                      onValueChange={(val) =>
+                        field.onChange(val === "__none__" ? null : val)
+                      }
+                      value={field.value || "__none__"}
                     >
                       <FormControl>
                         <SelectTrigger>
@@ -235,7 +239,7 @@ export function DealForm({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="">None</SelectItem>
+                        <SelectItem value="__none__">None</SelectItem>
                         {companies.map((company) => (
                           <SelectItem key={company.id} value={company.id}>
                             {company.name}
